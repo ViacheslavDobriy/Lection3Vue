@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lection 1</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <!-- <new-component title="Hello new title"></new-component>
+        <new-component title="Hello new 2">
+            <comp></comp>
+        </new-component> -->
+        <button @click="currentTab = nameButton" v-for="nameButton in nameButtons" :key="nameButton.id">
+            {{ nameButton }}
+        </button>
+        <component :is="changeTabs"></component>
+        <!-- <new-component title="Hello second title"></new-component>
+        <new-component :title="article" v-for="article in articles" :key="article.id"></new-component> -->
+    </div>
+    <script src="comp.js"></script>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                nameButtons: ['one', 'two', 'three'],
+                currentTab: 'one'
+                    // counter: 0
+                    // articles: ['info article', 'info article 2', 'info article 3']
+            },
+            computed: {
+                changeTabs() {
+                    return `change-${this.currentTab}`;
+                },
+
+            },
+        })
+    </script>
+</body>
+
+</html>
